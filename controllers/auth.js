@@ -92,7 +92,7 @@ exports.postSignup = (req, res, next) => {
   });
 
   User.findOne(
-    { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
+    { $or: [{ email: req.body.email }, { userName: req.body.userName },] },
     (err, existingUser) => {
       if (err) {
         return next(err);
@@ -110,6 +110,8 @@ exports.postSignup = (req, res, next) => {
         req.logIn(user, (err) => {
           if (err) {
             return next(err);
+          } else if (user.userType === "contractor") {
+            res.redirect("../contractor-profile");
           }
           res.redirect("/profile");
         });
