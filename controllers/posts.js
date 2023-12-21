@@ -88,5 +88,21 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
-  }
+  },
+  getContractorFeed: async (req, res) => {
+    try {
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      res.render("contractor-feed.ejs", { posts: posts });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getLaborerFeed: async (req, res) => {
+    try {
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      res.render("laborer-feed.ejs", { posts: posts });
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
