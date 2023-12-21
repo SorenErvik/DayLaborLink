@@ -4,7 +4,13 @@ const User = require("../models/User");
 
 exports.getLogin = (req, res) => {
   if (req.user) {
+  if (req.user.userType === "contractor") {
+    return res.redirect("../contractor-profile");
+  } else if (req.user.userType === "laborer") {
+    return res.redirect("../laborer-profile");
+  } else {
     return res.redirect("/profile");
+  }
   }
   res.render("login", {
     title: "Login",
