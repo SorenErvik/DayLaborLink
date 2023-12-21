@@ -112,6 +112,8 @@ exports.postSignup = (req, res, next) => {
             return next(err);
           } else if (user.userType === "contractor") {
             res.redirect("../contractor-profile");
+          } else if (user.userType === "laborer") {
+            res.redirect("../laborer-profile");
           }
           res.redirect("/profile");
         });

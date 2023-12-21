@@ -81,4 +81,12 @@ module.exports = {
       console.log(err);
     }
   },
+  getLaborerProfile: async (req, res) => {
+    try {
+      const posts = await Post.find({ user: req.user.id });
+      res.render("laborer-profile.ejs", { posts: posts, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 };
