@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -101,6 +102,26 @@ module.exports = {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
       res.render("laborer-feed.ejs", { posts: posts });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  updateSkills: async (req, res) => {
+    try {
+      const newSkills = req.body.skills.split(',').map(skill => skill.trim()); // split the string into an array and remove whitespace
+      const userId = req.user._id;
+  
+      const user = await User.findById(userId);
+      if (!user) {
+        console.log('User not found');
+        return res.status(404).send();
+      }
+  
+      user.skills = newSkills;
+      await user.save();
+  
+      console.log("Updated Skills");
+      res.redirect("/laborer-profile");
     } catch (err) {
       console.log(err);
     }

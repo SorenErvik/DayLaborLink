@@ -7,6 +7,14 @@
               <p><strong>Email</strong>: <%= user.email %></p>
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           </div>
+          <div>
+            <h3>Skills:</h3>
+            <form action="/updateSkills" method="POST">
+              <label for="skills">Update your skills:</label><br>
+              <input type="text" id="skills" name="skills" placeholder="Enter skills separated by commas"><br>
+              <input type="submit" value="Update Skills">
+            </form>
+          </div>
           <div class="mt-5">
             <h1>This is the laborer profile</h1>
           </div>

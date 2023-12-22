@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   password: String,
   userType: { type: String, enum: ['contractor', 'laborer'] }, //Add userType property
+  skills: [String],
 });
 
 // Password hash middleware.
