@@ -9,6 +9,11 @@
           </div>
           <div>
             <h3>Skills:</h3>
+            <ul>
+              <% user.skills.forEach(function(skill) { %>
+                <li><%= skill %></li>
+              <% }); %>
+            </ul>
             <form action="/updateSkills" method="POST">
               <label for="skills">Update your skills:</label><br>
               <input type="text" id="skills" name="skills" placeholder="Enter skills separated by commas"><br>
