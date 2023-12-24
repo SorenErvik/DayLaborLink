@@ -61,3 +61,8 @@ app.use("/post", postRoutes);
 app.listen(process.env.PORT, () => {
   console.log("Server is running, you better catch it!");
 });
+
+app.get('/contractor-feed', async (req, res) => {
+  const posts = await Post.find({ postType: 'laborer' });
+  res.render('contractor-feed', { posts });
+});

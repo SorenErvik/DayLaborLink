@@ -128,7 +128,6 @@ exports.postSignup = (req, res, next) => {
           } else if (user.userType === "laborer") {
             res.redirect("../laborer-profile");
           }
-          res.redirect("/profile");
         });
       });
     }
