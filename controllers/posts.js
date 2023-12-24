@@ -112,7 +112,7 @@ module.exports = {
   },
   getContractorFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      const posts = await Post.find({ postType: 'laborer' }).sort({ createdAt: "desc" }).lean();
       res.render("contractor-feed.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
