@@ -66,6 +66,26 @@ module.exports = {
       console.log(err);
     }
   },
+  createContractorPost: async (req, res) => {
+    try {
+      // Upload image to cloudinary
+      const result = await cloudinary.uploader.upload(req.file.path);
+
+      await Post.create({
+        title: req.body.title,
+        image: result.secure_url,
+        cloudinaryId: result.public_id,
+        caption: req.body.caption,
+        likes: 0,
+        user: req.user.id,
+        postType: 'contractor',
+      });
+      console.log("Post has been added!");
+      res.redirect("/contractor-profile");
+    } catch (err) {
+      console.log(err);
+    }
+  },
   likePost: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
@@ -120,7 +140,7 @@ module.exports = {
   },
   getLaborerFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      const posts = await Post.find({ postType: 'contractor' }).sort({ createdAt: "desc" }).lean();
       res.render("laborer-feed.ejs", { posts: posts });
     } catch (err) {
       console.log(err);

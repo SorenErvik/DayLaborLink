@@ -66,3 +66,9 @@ app.get('/contractor-feed', async (req, res) => {
   const posts = await Post.find({ postType: 'laborer' });
   res.render('contractor-feed', { posts });
 });
+
+app.get('/laborer-feed', async (req, res) => { 
+  const posts = await Post.find({ postType: 'contractor' });
+  res.render('laborer-feed', { posts });
+}
+)

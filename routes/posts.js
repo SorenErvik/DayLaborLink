@@ -11,6 +11,8 @@ router.post("/createPost", upload.single("file"), postsController.createPost);
 
 router.post("/createLaborerPost", upload.single("file"), postsController.createLaborerPost);
 
+router.post("/createContractorPost", upload.single("file"), postsController.createContractorPost);
+
 router.put("/likePost/:id", postsController.likePost);
 
 router.delete("/deletePost/:id", postsController.deletePost);
