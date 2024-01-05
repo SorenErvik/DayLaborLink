@@ -3,49 +3,56 @@
   <div class="row mt-5">
       <div class="col-6">
           <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+              <p class="text-2xl font-bold"><strong>User Name</strong>: <%= user.userName %></p>
+              <p class="text-gray-500"><strong>Email</strong>: <%= user.email %></p>
           </div>
-          <div class="mt-5">
-            <h1>This is the contractor profile</h1>
+          <div class="mt-4">
+            <p class="text-gray-700"><span class="font-bold">Total Jobs:</span> 500</p>
+          </div> 
+      <form action="/post/createContractorPost" enctype="multipart/form-data" method="POST">
+        <div class="space-y-12">
+          <div class="border-b border-gray-900/10 pb-12">
+            <h2 class="text-base font-semibold leading-7 text-gray-900">Add A Post</h2>
+            <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div class="sm:col-span-3">
+                <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
+                <div class="mt-2">
+                  <input type="text" id="title" name="title" placeholder="Give a title for the job posting" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+              </div>
+              <div class="col-span-full">
+                <label for="caption" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+                <div class="mt-2">
+                  <textarea id="caption" name="caption" rows="3" placeholder="Describe the job, location, pay, length of time needed, etc." class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="imgUpload" class="form-label">Image</label>
+              <input type="file" class="form-control" id="imageUpload" name="file">
+            </div>
+            <!-- Hidden field for userType -->
+            <input type="hidden" name="postType" value="contractor">
+            <button type="submit" value="Upload" class="signup-button rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
           </div>
-          <div class="mt-5">
-            <h2>Add a post</h2>
-            <form action="/post/createContractorPost" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-              </div>
-              <div class="mb-3">
-                <label for="caption" class="form-label">Caption</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
-              </div>
-              <!-- Hidden field for userType -->
-              <input type="hidden" name="postType" value="contractor">
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-            </form>
-          </div>
-      </div>
-      <div class="col-6">
-        <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
-            </a>
-          </li>
-        <% } %>
-        </ul>
-        <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/contractor-feed">Return to Feed</a>
-        </div>  
-      </div>  
+        </div>
+      </form>
     </div>
+    <div class="col-6">
+      <ul class="row list-unstyled">
+      <% for(var i=0; i<posts.length; i++) {%>
+        <li class="col-6 justify-content-between mt-5">
+          <a href="/post/<%= posts[i]._id%>">
+            <img class="img-fluid" src="<%= posts[i].image%>">
+          </a>
+        </li>
+      <% } %>
+      </ul>
+      <div class="row justify-content-center mt-5">
+        <a class="btn btn-primary" href="/contractor-feed">Return to Feed</a>
+      </div>  
+    </div>  
   </div>
 </div>
 <%- include('partials/footer') -%>
