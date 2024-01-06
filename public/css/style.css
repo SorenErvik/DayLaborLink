@@ -5,9 +5,9 @@
 .header-button {
     margin-right: 5%;
 }
-.signup-button {
-    margin-top: 5%;
+.marg-bot-1 {
+    margin-bottom: 1%;
 }
-.marg-bot-5 {
-    margin-bottom: 5%;
+.flex-column {
+    flex-direction: column;
 }

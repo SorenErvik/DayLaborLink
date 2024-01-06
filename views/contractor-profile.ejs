@@ -1,12 +1,12 @@
 <%- include('partials/header') -%>
 <div class="container">
-  <div class="row mt-5">
-      <div class="col-6">
+  <div class="row mt-5 flex-column">
+      <div>
           <div>
               <p class="text-2xl font-bold"><strong>User Name</strong>: <%= user.userName %></p>
               <p class="text-gray-500"><strong>Email</strong>: <%= user.email %></p>
           </div>
-          <div class="marg-bot-5">
+          <div class="marg-bot-1">
             <p class="text-gray-700"><span class="font-bold">Total Jobs:</span> <%= posts.length %></p>
           </div> 
       <form action="/post/createContractorPost" enctype="multipart/form-data" method="POST">
@@ -34,69 +34,46 @@
             </div>
             <!-- Hidden field for userType -->
             <input type="hidden" name="postType" value="contractor">
-            <button type="submit" value="Upload" class="signup-button rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+            <button type="submit" value="Upload" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
           </div>
         </div>
       </form>
     </div>
-    <div class="col-6">
-      <ul class="row list-unstyled">
-      <% for(var i=0; i<posts.length; i++) {%>
-        <li class="col-6 justify-content-between mt-5">
-          <a href="/post/<%= posts[i]._id%>">
-            <img class="img-fluid" src="<%= posts[i].image%>">
-          </a>
-        </li>
-      <% } %>
-      </ul>
-      <div class="row justify-content-center mt-5">
-        <a class="btn btn-primary" href="/contractor-feed">Return to Feed</a>
-      </div>  
-    </div>  
-
-
-    <!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
--->
-<div class="bg-white">
-  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Your Posts</h2>
-
-    <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-      <div class="group relative">
-        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-          <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-        </div>
-        <div class="mt-4 flex justify-between">
-          <div>
-            <h3 class="text-sm text-gray-700">
-              <a href="#">
-                <span aria-hidden="true" class="absolute inset-0"></span>
-                Click the image to learn more
-              </a>
-            </h3>
-          </div>
+    <div>
+      <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+            <h2 class="text-2xl font-bold tracking-tight text-gray-900">Your Posts</h2>
+      
+            <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                <% for(var i=0; i<posts.length; i++) { %>
+                    <div class="group relative">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <a href="/post/<%= posts[i]._id%>">
+                                <img src="<%= posts[i].image%>" alt="Post Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            </a>
+                        </div>
+                        <div class="mt-4 flex justify-between">
+                            <div>
+                                <h3 class="text-sm text-gray-700">
+                                    <a href="/post/<%= posts[i]._id%>">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        Click the image to learn more
+                                    </a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
         </div>
       </div>
-
-      <!-- More products... -->
+      <div class="row justify-content-center mb-3">
+        <a class="w-1/4 flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" href="/contractor-feed">Return to Feed</a>
+      </div>
+    </div>
     </div>
   </div>
 </div>
-
-
-
   </div>
 </div>
 <%- include('partials/footer') -%>
