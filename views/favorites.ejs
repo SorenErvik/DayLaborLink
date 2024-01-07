@@ -1,15 +1,21 @@
 <%- include('partials/header') -%>
-  <div class="container">
-    <div class="row justify-content-center mt-5">
-      <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">These are your favorited posts</h2>
+
+    <ul class="row list-unstyled">
+      <% if (user && user.favorites && user.favorites.length > 0) { %>
+        <% for (var i = 0; i < user.favorites.length; i++) { %>
           <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
+            <a href="/post/<%= user.favorites[i]._id %>">
+              <img class="img-fluid" src="<%= user.favorites[i].image %>">
             </a>
           </li>
         <% } %>
-        </ul>
-    </div>
-  </div>  
+      <% } else { %>
+        <p>No favorite posts found.</p>
+      <% } %>
+    </ul>
+  </div>
+</div>
 <%- include('partials/footer') -%>

@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema({
   password: String,
   userType: { type: String, enum: ['contractor', 'laborer'] }, //Add userType property
   skills: [String],
+  favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }], // Array of Post references
 });
 
 // Password hash middleware.

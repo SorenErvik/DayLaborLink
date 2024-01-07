@@ -27,6 +27,20 @@ module.exports = {
       console.log(err);
     }
   },
+  getFavorites: async (req, res) => {
+    try {
+      // Assuming you have user information in req.user after authentication
+      const user = req.user;
+  
+      // Retrieve user's favorites from the database
+      const userWithFavorites = await User.findById(user._id).populate('favorites');
+  
+      // Pass the userWithFavorites object to the template
+      res.render("favorites.ejs", { user: userWithFavorites });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary
@@ -88,12 +102,19 @@ module.exports = {
   },
   favoritePost: async (req, res) => {
     try {
-      await Post.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { favorites: 1 },
-        }
-      );
+    // Update the favorites count in the Post document
+    const updatedPost = await Post.findOneAndUpdate(
+      { _id: req.params.id },
+      { $inc: { favorites: 1 } },
+      { new: true } // Return the updated post
+    );
+
+          // Find the current user and update their favorites array
+    const user = await User.findOneAndUpdate(
+      { _id: req.user.id }, // Assuming you have user information in req.user after authentication
+      { $push: { favorites: updatedPost._id } },
+      { new: true } // Return the updated user
+    );
       console.log("Favorites +1");
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
