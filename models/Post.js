@@ -17,7 +17,7 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  likes: {
+  favorites: {
     type: Number,
     required: true,
   },

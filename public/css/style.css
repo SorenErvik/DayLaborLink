@@ -11,3 +11,6 @@
 .flex-column {
     flex-direction: column;
 }
+.signup-btn {
+    margin-top: 2.5%;
+}

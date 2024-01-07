@@ -37,7 +37,7 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
-        likes: 0,
+        favorites: 0,
         user: req.user.id,
       });
       console.log("Post has been added!");
@@ -56,7 +56,7 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
-        likes: 0,
+        favorites: 0,
         user: req.user.id,
         postType: 'laborer',
       });
@@ -76,7 +76,7 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
-        likes: 0,
+        favorites: 0,
         user: req.user.id,
         postType: 'contractor',
       });
@@ -86,15 +86,15 @@ module.exports = {
       console.log(err);
     }
   },
-  likePost: async (req, res) => {
+  favoritePost: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         {
-          $inc: { likes: 1 },
+          $inc: { favorites: 1 },
         }
       );
-      console.log("Likes +1");
+      console.log("Favorites +1");
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);
@@ -133,7 +133,7 @@ module.exports = {
   getContractorFeed: async (req, res) => {
     try {
       const posts = await Post.find({ postType: 'laborer' }).sort({ createdAt: "desc" }).lean();
-      res.render("contractor-feed.ejs", { posts: posts });
+      res.render("contractor-feed.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -141,7 +141,7 @@ module.exports = {
   getLaborerFeed: async (req, res) => {
     try {
       const posts = await Post.find({ postType: 'contractor' }).sort({ createdAt: "desc" }).lean();
-      res.render("laborer-feed.ejs", { posts: posts });
+      res.render("laborer-feed.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
     }

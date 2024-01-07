@@ -1,64 +1,91 @@
 <%- include('partials/header') -%>
 <div class="container">
-  <div class="row mt-5">
-      <div class="col-6">
-          <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-          </div>
-          <div>
-            <h3>Skills:</h3>
-            <ul>
-              <% user.skills.forEach(function(skill) { %>
-                <li><%= skill %></li>
-              <% }); %>
-            </ul>
-            <form action="/updateSkills" method="POST">
-              <label for="skills">Update your skills:</label><br>
-              <input type="text" id="skills" name="skills" placeholder="Enter skills separated by commas"><br>
-              <input type="submit" value="Update Skills">
-            </form>
-          </div>
-          <div class="mt-5">
-            <h1>This is the laborer profile</h1>
-          </div>
-          <div class="mt-5">
-            <h2>Let employees know you are ready to work!</h2>
-            <form action="/post/createLaborerPost" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-              </div>
-              <div class="mb-3">
-                <label for="caption" class="form-label">Caption</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
-              </div>
-              <!-- Hidden field for userType -->
-              <input type="hidden" name="postType" value="laborer">
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-            </form>
-          </div>
+  <div class="row mt-5 flex-column">
+    <div>
+      <div>
+        <p class="text-2xl font-bold"><strong>User Name</strong>: <%= user.userName %></p>
+        <p class="text-gray-500"><strong>Email</strong>: <%= user.email %></p>
       </div>
-      <div class="col-6">
-        <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
-            </a>
-          </li>
-        <% } %>
-        </ul>
-        <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/laborer-feed">Return to Feed</a>
-        </div>  
-      </div>  
+      <div class="marg-bot-1">
+        <div class="mb-4">
+          <h3 class="text-lg font-semibold mb-2">Skills:</h3>
+          <ul class="list-disc ml-5">
+            <% user.skills.forEach(function(skill) { %>
+              <li class="text-gray-700"><%= skill %></li>
+            <% }); %>
+          </ul>
+        </div>
+        <form action="/updateSkills" method="POST" class="mb-4">
+          <label for="skills" class="block text-sm font-medium text-gray-700 mb-1">Update your skills:</label>
+          <input type="text" id="skills" name="skills" placeholder="Enter skills separated by commas" class="block w-25 rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <button type="submit" class="mt-2 w-25 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Update Skills</button>
+        </form>
+      </div>
+      
+      
+      <form action="/post/createLaborerPost" enctype="multipart/form-data" method="POST">
+        <div class="space-y-12">
+          <div class="border-b border-gray-900/10 pb-12">
+            <h2 class="text-base font-semibold leading-7 text-gray-900">Add A Post</h2>
+            <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div class="sm:col-span-3">
+                <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
+                <div class="mt-2">
+                  <input type="text" id="title" name="title" placeholder="Give a title for the job posting" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+              </div>
+              <div class="col-span-full">
+                <label for="caption" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+                <div class="mt-2">
+                  <textarea id="caption" name="caption" rows="3" placeholder="Talk about your skills, desired pay, and what makes you great." class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="imgUpload" class="form-label">Image</label>
+              <input type="file" class="form-control" id="imageUpload" name="file">
+            </div>
+            <!-- Hidden field for userType -->
+            <input type="hidden" name="postType" value="laborer">
+            <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>
+      <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+          <h2 class="text-2xl font-bold tracking-tight text-gray-900">Your Posts</h2>
+
+          <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <% for(var i=0; i<posts.length; i++) { %>
+              <div class="group relative">
+                <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                  <a href="/post/<%= posts[i]._id%>">
+                    <img src="<%= posts[i].image%>" alt="Post Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                  </a>
+                </div>
+                <div class="mt-4 flex justify-between">
+                  <div>
+                    <h3 class="text-sm text-gray-700">
+                      <a href="/post/<%= posts[i]._id%>">
+                        <span aria-hidden="true" class="absolute inset-0"></span>
+                        Click the image to learn more
+                      </a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mb-3">
+        <a class="w-1/4 flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" href="/laborer-feed">Return to Feed</a>
+      </div>
     </div>
   </div>
+</div>
 </div>
 <%- include('partials/footer') -%>
