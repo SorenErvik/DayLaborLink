@@ -1,18 +1,26 @@
 <%- include('partials/header') -%>
 <div class="container">
+  <!-- Container for Content -->
   <div class="row justify-content-center mt-5">
+    <!-- Heading for Favorite Posts -->
     <h2 class="text-2xl font-bold tracking-tight text-gray-900">These are your favorited posts</h2>
 
+     <!-- List of Favorite Posts -->
     <ul class="row list-unstyled">
       <% if (user && user.favorites && user.favorites.length > 0) { %>
+        <!-- Check if there are favorite posts available -->
         <% for (var i = 0; i < user.favorites.length; i++) { %>
+          <!-- Individual Favorite Post -->
           <li class="col-6 justify-content-between mt-5">
+            <!-- Link to View Post Details -->
             <a href="/post/<%= user.favorites[i]._id %>">
+              <!-- Image of the Favorite Post -->
               <img class="img-fluid" src="<%= user.favorites[i].image %>">
             </a>
           </li>
         <% } %>
       <% } else { %>
+        <!-- Displayed if no favorite posts are found -->
         <p>No favorite posts found.</p>
       <% } %>
     </ul>
