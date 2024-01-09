@@ -1,33 +1,48 @@
 <%- include('partials/header') -%>
 <div class="container">
   <div class="row mt-5">
+    <!-- User Information Section -->
       <div class="col-6">
           <div>
+            <!-- Display User Information -->
               <p><strong>User Name</strong>: <%= user.userName %></p>
               <p><strong>Email</strong>: <%= user.email %></p>
+
+              <!-- Logout Button -->
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           </div>
           <div class="mt-5">
+            <!-- Add a Post Section -->
             <h2>Add a post</h2>
             <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+              <!-- Post Title Input -->
               <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
                   <input type="text" class="form-control" id="title" name="title">
               </div>
+
+              <!-- Post Caption Input -->
               <div class="mb-3">
                 <label for="caption" class="form-label">Caption</label>
                 <textarea class="form-control" id="caption" name="caption"></textarea>
               </div>
+
+              <!-- Image Upload Input -->
               <div class="mb-3">
                 <label for="imgUpload" class="form-label">Image</label>
                 <input type="file" class="form-control" id="imageUpload" name="file">
               </div>
+
+              <!-- Submit Button -->
               <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
             </form>
           </div>
       </div>
+
+      <!-- User Posts Section -->
       <div class="col-6">
         <ul class="row list-unstyled">
+          <!-- Display User Posts -->
         <% for(var i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
             <a href="/post/<%= posts[i]._id%>">
@@ -36,6 +51,8 @@
           </li>
         <% } %>
         </ul>
+
+        <!-- Return to Feed Button -->
         <div class="row justify-content-center mt-5">
           <a class="btn btn-primary" href="/feed">Return to Feed</a>
         </div>  

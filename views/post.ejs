@@ -1,11 +1,17 @@
 <%- include('partials/header') -%>
 <div class="bg-white">
   <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+    <!-- Post Details Section -->
     <div>
+      <!-- Post Title -->
       <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"><%= post.title %></h2>
+
+      <!-- Post Caption/Description -->
       <p class="mt-4 text-gray-500"><%= post.caption %></p>
       
+      <!-- Interaction Buttons (Favorite and Delete) -->
       <div class="row justify-content-between mt-5">
+        <!-- Favorite Button -->
         <form
           class="col-1"
           action="/post/favoritePost/<%= post.id %>?_method=PUT"
@@ -15,7 +21,10 @@
             <i class="fas fa-heart"></i>
           </button>
         </form>
+
+        <!-- Display Favorites Count -->
         <h3 class="col-3">Favorites: <%= post.favorites %></h3>
+        <!-- Delete Button (Visible only to the post owner) -->
         <% if(post.user == user.id){ %>
           <form
             action="/post/deletePost/<%= post.id %>?_method=DELETE"
@@ -30,6 +39,8 @@
       </div>
       
     </div>
+
+    <!-- Post Image Section -->
     <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
       <img src="<%= post.image%>" alt="Post Image" class="rounded-lg bg-gray-100 w-full h-auto">
     </div>

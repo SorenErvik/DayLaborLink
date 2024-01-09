@@ -62,6 +62,7 @@ app.listen(process.env.PORT, () => {
   console.log("Server is running, you better catch it!");
 });
 
+// Additional routes for contractor and laborer feeds
 app.get('/contractor-feed', async (req, res) => {
   const posts = await Post.find({ postType: 'laborer' });
   res.render('contractor-feed', { posts });
@@ -70,5 +71,4 @@ app.get('/contractor-feed', async (req, res) => {
 app.get('/laborer-feed', async (req, res) => { 
   const posts = await Post.find({ postType: 'contractor' });
   res.render('laborer-feed', { posts });
-}
-)
+});

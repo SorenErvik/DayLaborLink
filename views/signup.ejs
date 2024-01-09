@@ -2,23 +2,30 @@
     <main class="container">
         <div class="row justify-content-center">
             <section class="col-6 mt-5">
-                <% if (locals.messages.errors) { %>
-                    <% messages.errors.forEach( el => { %>
-                        <div class="alert alert-danger"><%= el.msg %></div>
-                    <% }) %>    
-                <% } %>
+
+              <!-- Display Error Messages -->
+              <% if (locals.messages.errors) { %>
+                <% messages.errors.forEach( el => { %>
+                  <div class="alert alert-danger"><%= el.msg %></div>
+                  <% }) %>    
+                  <% } %>
+                  <!-- Display Info Messages -->
                 <% if (locals.messages.info) { %>
                     <% messages.info.forEach( el => { %>
                         <div class="alert alert-info"><%= el.msg %></div>
                     <% }) %>    
                 <% } %>
+                
+<!-- Signup Form -->                
 <form action="/signup" method="POST">
     <div class="space-y-12">
       <div class="border-gray-900/10 pb-12">
         <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
         <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
-  
+        
+        <!-- User Information Inputs -->
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <!-- Name Input -->
           <div class="sm:col-span-4">
             <label for="userName" class="block text-sm font-medium leading-6 text-gray-900">Name (First & Last)</label>
             <div class="mt-2">
@@ -27,6 +34,8 @@
               </div>
             </div>
           </div>
+
+          <!-- Email Input -->
           <div class="sm:col-span-4">
             <label for="exampleInputEmail1" class="block text-sm font-medium leading-6 text-gray-900">Email Address</label>
             <div class="mt-2">
@@ -36,6 +45,8 @@
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
           </div>
+
+          <!-- Password Input -->
           <div class="sm:col-span-4">
             <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
             <div class="mt-2">
@@ -44,6 +55,8 @@
               </div>
             </div>
           </div>
+
+          <!-- Confirm Password Input -->
           <div class="sm:col-span-4">
             <label for="confirmPassword" class="block text-sm font-medium leading-6 text-gray-900">Confirm Password</label>
             <div class="mt-2">
@@ -52,6 +65,8 @@
               </div>
             </div>
           </div>
+
+          <!-- User Type Dropdown -->
           <div class="sm:col-span-3">
             <label for="userType" class="block text-sm font-medium leading-6 text-gray-900">Role</label>
             <div class="mt-2">
@@ -62,6 +77,8 @@
             </div>
           </div>
         </div>
+
+        <!-- Signup Button -->
         <button type="submit" class="signup-btn rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
       </div>
     </div>

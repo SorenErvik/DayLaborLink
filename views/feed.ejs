@@ -1,10 +1,18 @@
 <%- include('partials/header') -%>
+
+<!-- Main Content Container -->
   <div class="container">
+    <!-- Row with Justified Content at the Center -->
     <div class="row justify-content-center mt-5">
+      <!-- Unordered List for Posts -->
       <ul class="row list-unstyled">
+        <!-- Loop through the Posts -->
         <% for(var i=0; i<posts.length; i++) {%>
+          <!-- Individual Post Item -->
           <li class="col-6 justify-content-between mt-5">
+            <!-- Link to View Post Details -->
             <a href="/post/<%= posts[i]._id%>">
+              <!-- Image of the Post -->
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
           </li>
