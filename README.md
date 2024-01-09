@@ -31,7 +31,7 @@ Link to project: https://daylaborlink-472b8f4f1da3.herokuapp.com/
 ![Screenshot of index.ejs](image.png)
 
 How It's Made:
-Tech used: HTML, CSS, JavaScript
+Tech used: HTML, CSS, JavaScript, Node.js, Express.js, MongoDB, EJS, Tailwind CSS, and Passport.js
 
 DayLaborLink is a web application designed to streamline the process of connecting employers with day laborers. The platform provides a user-friendly interface built with HTML, CSS, and JavaScript, ensuring a seamless experience for both employers and laborers. The frontend is carefully crafted to be responsive and visually appealing, prioritizing usability and accessibility. To enhance functionality and maintainability, I opted for [Framework of choice], which played a crucial role in structuring and organizing the codebase.
 
