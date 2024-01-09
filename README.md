@@ -28,7 +28,7 @@ DayLaborLink is a web application designed to efficiently connect employers with
 
 Link to project: https://daylaborlink-472b8f4f1da3.herokuapp.com/
 
-![Screenshot of index.ejs](image.png)
+![DayLaborLink GIF](<DayLaborLink GIF.gif>)
 
 How It's Made:
 Tech used: HTML, CSS, JavaScript, Node.js, Express.js, MongoDB, EJS, Tailwind CSS, and Passport.js
