@@ -24,11 +24,11 @@
 
 # DayLaborLink
 
-Write a short sentence or two about this project and what it does. Be sure to include a link and a screenshot (we're front end devs so we can actually see our work!).
+DayLaborLink is a web application designed to efficiently connect employers with available day laborers. Employers can post job opportunities, and day laborers can access and respond to these opportunities, facilitating a streamlined and responsive platform for temporary work assignments.
 
-Link to project: http://recruiters-love-seeing-live-demos.com/
+Link to project: https://daylaborlink-472b8f4f1da3.herokuapp.com/
 
-alt tag
+![Screenshot of index.ejs](image.png)
 
 How It's Made:
 Tech used: HTML, CSS, JavaScript, Framework of choice
