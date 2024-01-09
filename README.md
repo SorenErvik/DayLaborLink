@@ -74,12 +74,3 @@ Configuring Routes: Implementing effective routing was a crucial aspect of the p
 Database Connection Setup: Configuring the database connection, especially with MongoDB Atlas, brought its own set of challenges. Overcoming issues related to connection strings, authentication, and data modeling enhanced my skills in database management and interaction.
 
 Heroku Deployment: Deploying the application on Heroku was a significant milestone, but not without its complexities. Addressing issues related to environment variables, database connections in a cloud environment, and ensuring a smooth deployment process underscored the importance of thorough testing and troubleshooting.
-
-Examples:
-Take a look at these couple examples that I have in my own portfolio:
-
-Palettable: https://github.com/alecortega/palettable
-
-Twitter Battle: https://github.com/alecortega/twitter-battle
-
-Patch Panel: https://github.com/alecortega/patch-panel
