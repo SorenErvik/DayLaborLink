@@ -12,6 +12,8 @@
         <% for (var i = 0; i < user.favorites.length; i++) { %>
           <!-- Individual Favorite Post -->
           <li class="col-6 justify-content-between mt-5">
+            <!-- Title of post -->
+        <h3 class="post-title-text font-bold tracking-tight text-gray-900"><%= user.favorites[i].title%></h3>
             <!-- Link to View Post Details -->
             <a href="/post/<%= user.favorites[i]._id %>">
               <!-- Image of the Favorite Post -->
