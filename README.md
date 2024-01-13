@@ -45,7 +45,7 @@ Throughout the development process, I prioritized clean code practices, modular 
 
 In conclusion, DayLaborLink represents a holistic approach to web development, combining frontend and backend technologies to create a functional, secure, and user-friendly platform. The project showcases my skills in full-stack development, emphasizing my ability to tackle challenges, make informed architectural decisions, and deliver a polished end product.
 
-# Current Optimizations:
+# Current Optimizations & Updates:
 
 Localized Feeds for Contractors and Laborers
 
@@ -59,7 +59,9 @@ The implementation of these localized feeds not only enhances user satisfaction 
 
 The backend logic has been intricately designed to discern user types and geographic locations, allowing the frontend to dynamically adapt and showcase localized feeds based on the user's profile. This optimization underscores the commitment to providing a personalized and efficient platform that caters to the unique requirements of both contractors and laborers.
 
-1/12/2024 - Added post titles to each post in the laborer-feed, contractor-feed, laborer-profile, contractor-profile, and favorites. This makes looking at the posts more intuitive and give a better descriptor of the type of job or service that is being posted.
+1/12/2024 - Added post titles to each post in the laborer-feed, contractor-feed, laborer-profile, contractor-profile, and favorites. This makes looking at the posts more intuitive and give a better descriptor of the type of job or service that is being posted. 
+
+Added styling to the favorites page to make the images a uniform size.
 
 # Future Optimizations:
 

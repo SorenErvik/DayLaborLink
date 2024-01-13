@@ -5,20 +5,22 @@
     <!-- Heading for Favorite Posts -->
     <h2 class="text-2xl font-bold tracking-tight text-gray-900">These are your favorited posts</h2>
 
-     <!-- List of Favorite Posts -->
+    <!-- List of Favorite Posts -->
     <ul class="row list-unstyled">
       <% if (user && user.favorites && user.favorites.length > 0) { %>
         <!-- Check if there are favorite posts available -->
         <% for (var i = 0; i < user.favorites.length; i++) { %>
           <!-- Individual Favorite Post -->
-          <li class="col-6 justify-content-between mt-5">
+          <li class="col-6 justify-content-between mt-5 group relative">
             <!-- Title of post -->
-        <h3 class="post-title-text font-bold tracking-tight text-gray-900"><%= user.favorites[i].title%></h3>
-            <!-- Link to View Post Details -->
-            <a href="/post/<%= user.favorites[i]._id %>">
-              <!-- Image of the Favorite Post -->
-              <img class="img-fluid" src="<%= user.favorites[i].image %>">
-            </a>
+            <h3 class="post-title-text font-bold tracking-tight text-gray-900"><%= user.favorites[i].title%></h3>
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+              <!-- Link to View Post Details -->
+              <a href="/post/<%= user.favorites[i]._id %>">
+                <!-- Image of the Favorite Post -->
+                <img class="h-full w-full object-cover object-center lg:h-full lg:w-full" src="<%= user.favorites[i].image %>">
+              </a>
+            </div>
           </li>
         <% } %>
       <% } else { %>
@@ -28,4 +30,5 @@
     </ul>
   </div>
 </div>
+
 <%- include('partials/footer') -%>
