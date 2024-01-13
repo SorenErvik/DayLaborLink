@@ -59,6 +59,8 @@ The implementation of these localized feeds not only enhances user satisfaction 
 
 The backend logic has been intricately designed to discern user types and geographic locations, allowing the frontend to dynamically adapt and showcase localized feeds based on the user's profile. This optimization underscores the commitment to providing a personalized and efficient platform that caters to the unique requirements of both contractors and laborers.
 
+1/12/2024 - Added post titles to each post in the laborer-feed, contractor-feed, laborer-profile, contractor-profile, and favorites. This makes looking at the posts more intuitive and give a better descriptor of the type of job or service that is being posted.
+
 # Future Optimizations:
 
 Messaging System: Implementing a robust messaging system to facilitate communication between contractors and laborers, enhancing collaboration and coordination.
