@@ -15,6 +15,8 @@
       <% for(var i=0; i<posts.length; i++) { %>
         <!-- Container for each post with relative positioning -->
         <div class="group relative">
+        <!-- Title of post -->
+        <h3 class="font-bold tracking-tight text-gray-900"><%= posts[i].title%></h3>
           <!-- Aspect ratio for the post image with rounded background -->
           <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
             <!-- Link to the individual post -->

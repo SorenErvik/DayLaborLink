@@ -12,6 +12,8 @@
           <li class="col-6 justify-content-between mt-5">
             <!-- Link to View Post Details -->
             <a href="/post/<%= posts[i]._id%>">
+              <!-- Title of post -->
+              <h3><%= posts[i].title%></h3>
               <!-- Image of the Post -->
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
